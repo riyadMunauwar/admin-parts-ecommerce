@@ -31,7 +31,9 @@ class AdminPanelProvider extends PanelProvider
             ->colors([
                 'primary' => Color::Amber,
             ])
+            ->favicon('https://www.mobilecomusa.com/storage/2103/Mobile-Com-USA-favicon.png')
             ->brandLogo('https://www.mobilecomusa.com/storage/2/Logo-White.png')
+            ->brandLogoHeight('2rem')
             ->discoverResources(in: app_path('Filament/Admin/Resources'), for: 'App\\Filament\\Admin\\Resources')
             ->discoverPages(in: app_path('Filament/AdminPages'), for: 'App\\Filament\\Admin\\Pages')
             ->pages([
