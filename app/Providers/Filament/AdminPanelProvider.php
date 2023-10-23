@@ -31,6 +31,7 @@ class AdminPanelProvider extends PanelProvider
             ->colors([
                 'primary' => Color::Amber,
             ])
+            ->brandLogo('https://www.mobilecomusa.com/storage/2/Logo-White.png')
             ->discoverResources(in: app_path('Filament/Admin/Resources'), for: 'App\\Filament\\Admin\\Resources')
             ->discoverPages(in: app_path('Filament/AdminPages'), for: 'App\\Filament\\Admin\\Pages')
             ->pages([
