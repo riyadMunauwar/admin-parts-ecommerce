@@ -76,14 +76,12 @@ class CategoryResource extends Resource
 
                 Tables\Columns\TextColumn::make('description')
                     ->label('Description')
-                    ->searchable()
                     ->toggleable()
                     ->limit(30),
 
                 Tables\Columns\TextColumn::make('children.name')
                     ->label('Children')
                     ->badge()
-                    ->searchable()
                     ->toggleable(),
 
                 Tables\Columns\TextColumn::make('parent.name')
@@ -95,7 +93,6 @@ class CategoryResource extends Resource
 
                 Tables\Columns\CheckboxColumn::make('is_featured')
                     ->label('Featured')
-                    ->searchable()
                     ->toggleable(),
             ])
             ->filters([
