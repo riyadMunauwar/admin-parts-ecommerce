@@ -7,14 +7,14 @@ use App\Models\Order;
 
 class YearlySalesChart extends ChartWidget
 {
-    protected static ?string $heading = 'Sales this month';
+    protected static ?string $heading = 'Sales this year';
 
     protected function getData(): array
     {
         return [
             'datasets' => [
                 [
-                    'label' => 'Sales this month',
+                    'label' => 'Sales this year',
                     'data' => Order::getCurrentYearSales()['sales'],
                     'fill' => 'start',
                 ],
