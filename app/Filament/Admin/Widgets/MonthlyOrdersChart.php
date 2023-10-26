@@ -7,19 +7,19 @@ use App\Models\Order;
 
 class MonthlyOrdersChart extends ChartWidget
 {
-    protected static ?string $heading = 'Chart';
+    protected static ?string $heading = 'Orders this month';
 
     protected function getData(): array
     {
         return [
             'datasets' => [
                 [
-                    'label' => 'Sales this year',
-                    'data' => Order::getCurrentYearSales()['sales'],
+                    'label' => 'Orders this month',
+                    'data' => Order::getCurrentMonthOrders()['sales'],
                     'fill' => 'start',
                 ],
             ],
-            'labels' => Order::getCurrentYearSales()['labels'],
+            'labels' => Order::getCurrentMonthOrders()['labels'],
         ];
     }
 
