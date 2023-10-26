@@ -4,7 +4,7 @@ namespace App\Filament\Admin\Widgets;
 
 use Filament\Widgets\ChartWidget;
 
-class MonthllySalesChart extends ChartWidget
+class MonthlySalesChart extends ChartWidget
 {
     protected static ?string $heading = 'Chart';
 
