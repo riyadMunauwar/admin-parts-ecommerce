@@ -117,7 +117,7 @@ class Order extends Model
             $chartSales[] = $sale->total_orders;
         }
     
-        return ['labels' => $chartLabels, 'sales' => $chartOrders];
+        return ['labels' => $chartLabels, 'orders' => $chartOrders];
     }
 
 
