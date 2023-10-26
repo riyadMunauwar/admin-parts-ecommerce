@@ -10,10 +10,11 @@ use App\Models\Address;
 use App\Models\Discount;
 use App\Models\Order;
 use Illuminate\Support\Facades\DB;
+use Filament\Models\Contracts\FilamentUser;
 
 
 
-class User extends Authenticatable
+class User extends Authenticatable implements FilamentUser
 {
     use HasFactory;
     use Notifiable;
@@ -63,6 +64,12 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+
+    public function canAccessPanel(Panel $panel): bool
+    {
+        return $this->role === 'admin';
+    }
 
 
     // Attribute
