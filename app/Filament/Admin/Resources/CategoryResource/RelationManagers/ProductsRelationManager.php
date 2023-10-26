@@ -47,9 +47,9 @@ class ProductsRelationManager extends RelationManager
                     Tables\Actions\DeleteBulkAction::make(),
                 ]),
             ])
-            ->recordUrl(
-                fn (Model $record): string => route('products.edit', ['record' => $record]),
-            )
+            // ->recordUrl(
+            //     fn (Model $record): string => route('products.edit', ['record' => $record]),
+            // )
             ->reorderable('sort_order');
     }
 }
