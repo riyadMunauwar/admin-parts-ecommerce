@@ -15,7 +15,7 @@ class MonthlyOrdersChart extends ChartWidget
             'datasets' => [
                 [
                     'label' => 'Orders this month',
-                    'data' => Order::getCurrentMonthOrders()['sales'],
+                    'data' => Order::getCurrentMonthOrders()['orders'],
                     'fill' => 'start',
                 ],
             ],

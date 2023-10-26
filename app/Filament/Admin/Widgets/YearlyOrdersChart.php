@@ -16,7 +16,7 @@ class YearlyOrdersChart extends ChartWidget
             'datasets' => [
                 [
                     'label' => 'Orders this year',
-                    'data' => Order::getCurrentYearOrders()['sales'],
+                    'data' => Order::getCurrentYearOrders()['orders'],
                     'fill' => 'start',
                 ],
             ],
