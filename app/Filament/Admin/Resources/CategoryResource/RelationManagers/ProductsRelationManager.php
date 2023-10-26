@@ -30,7 +30,15 @@ class ProductsRelationManager extends RelationManager
         return $table
             ->recordTitleAttribute('name')
             ->columns([
-                Tables\Columns\TextColumn::make('name'),
+                SpatieMediaLibraryImageColumn::make('thumbnail')
+                    ->collection('thumbnail')
+                    ->width(50)
+                    ->height(50)
+                    ->circular()
+                    ->toggleable(),
+
+                Tables\Columns\TextColumn::make('search_name')
+                    ->searchable(),
             ])
             ->filters([
                 //
