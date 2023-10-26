@@ -3,7 +3,7 @@
 namespace App\Filament\Admin\Widgets;
 
 use Filament\Widgets\ChartWidget;
-use App\Models\Year;
+use App\Models\Order;
 
 
 class YearlyOrdersChart extends ChartWidget
