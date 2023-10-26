@@ -10,6 +10,7 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Illuminate\Database\Eloquent\Model;
+use Filament\Tables\Columns\SpatieMediaLibraryImageColumn;
 
 class ProductsRelationManager extends RelationManager
 {
@@ -28,7 +29,7 @@ class ProductsRelationManager extends RelationManager
     public function table(Table $table): Table
     {
         return $table
-            ->recordTitleAttribute('name')
+            ->recordTitleAttribute('search_name')
             ->columns([
                 SpatieMediaLibraryImageColumn::make('thumbnail')
                     ->collection('thumbnail')
