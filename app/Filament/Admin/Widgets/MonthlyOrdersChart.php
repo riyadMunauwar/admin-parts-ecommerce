@@ -5,21 +5,21 @@ namespace App\Filament\Admin\Widgets;
 use Filament\Widgets\ChartWidget;
 use App\Models\Order;
 
-class MonthlySalesChart extends ChartWidget
+class MonthlyOrdersChart extends ChartWidget
 {
-    protected static ?string $heading = 'Sales this month';
+    protected static ?string $heading = 'Chart';
 
     protected function getData(): array
     {
         return [
             'datasets' => [
                 [
-                    'label' => 'Sales this month',
-                    'data' => Order::getCurrentMonthSales()['sales'],
+                    'label' => 'Sales this year',
+                    'data' => Order::getCurrentYearSales()['sales'],
                     'fill' => 'start',
                 ],
             ],
-            'labels' => Order::getCurrentMonthSales()['labels'],
+            'labels' => Order::getCurrentYearSales()['labels'],
         ];
     }
 
