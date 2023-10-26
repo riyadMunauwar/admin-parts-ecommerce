@@ -35,7 +35,7 @@ class Order extends Model
     
         $sales = static::selectRaw('YEAR(created_at) as year, MONTH(created_at) as month, SUM(total_product_price) as total_sales')
             ->whereYear('created_at', $currentYear)
-            ->groupBy('month')
+            ->groupBy('created_at')
             ->get();
     
         $chartLabels = [];
@@ -103,7 +103,7 @@ class Order extends Model
     
         $sales = static::selectRaw('YEAR(created_at) as year, MONTH(created_at) as month, COUNT(*) as total_orders')
             ->whereYear('created_at', $currentYear)
-            ->groupBy('month')
+            ->groupBy('created_at')
             ->get();
     
         $chartLabels = [];
