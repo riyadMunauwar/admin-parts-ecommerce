@@ -5,6 +5,7 @@ namespace App\Filament\Admin\Widgets;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Filament\Widgets\TableWidget as BaseWidget;
+use App\Models\Order;
 
 class LatestOrders extends BaseWidget
 {
@@ -23,7 +24,7 @@ class LatestOrders extends BaseWidget
             Tables\Columns\TextColumn::make('customer.name')
                 ->searchable()
                 ->sortable(),
-                
+
             Tables\Columns\TextColumn::make('payment_status')
                 ->badge(),
 
