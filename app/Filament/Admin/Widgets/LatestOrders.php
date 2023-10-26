@@ -6,13 +6,14 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Filament\Widgets\TableWidget as BaseWidget;
 use App\Models\Order;
+use App\Filament\Admin\Resources\OrderResorce;
 
 class LatestOrders extends BaseWidget
 {
     public function table(Table $table): Table
     {
         return $table
-        ->query(Order::query())
+        ->query(OrderResource::getEloquentQuery())
         ->defaultPaginationPageOption(5)
         ->defaultSort('created_at', 'desc')
         ->columns([
