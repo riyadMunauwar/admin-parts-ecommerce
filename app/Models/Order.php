@@ -28,22 +28,50 @@ class Order extends Model
         return $this->total_product_price + $this->shipping_cost + $this->total_vat;
     }
 
+
+    public static function getCurrentYearSales()
+    {
+        $currentYear = Carbon::now()->year;
+    
+        $sales = static::selectRaw('YEAR(created_at) as year, MONTH(created_at) as month, SUM(total_product_price) as total_sales')
+            ->whereYear('created_at', $currentYear)
+            ->groupBy('year', 'month')
+            ->get();
+    
+        $chartLabels = [];
+        $chartSales = [];
+    
+        foreach ($sales as $sale) {
+            // Create a label for the month (e.g., "Jan 2023")
+            $monthLabel = Carbon::createFromDate($sale->year, $sale->month)->format('M Y');
+            $chartLabels[] = $monthLabel;
+    
+            $chartSales[] = $sale->total_sales;
+        }
+    
+        return ['labels' => $chartLabels, 'sales' => $chartSales];
+    }
+
+
     public static function getCurrentMonthSales()
     {
         $currentMonthStart = Carbon::now()->startOfMonth();
         $currentMonthEnd = Carbon::now()->endOfMonth();
 
-        $sales = static::selectRaw('DATE(order_date) as date, SUM(total_product_price) as total_sales')
-            ->whereBetween('order_date', [$currentMonthStart, $currentMonthEnd])
-            ->groupBy('date')
+        $sales = static::selectRaw('DATE(created_at) as date, SUM(total_product_price) as total_sales')
+            ->whereBetween('created_at', [$currentMonthStart, $currentMonthEnd])
+            ->groupBy('created_at')
             ->get();
 
-        $chartData = [];
+        $chartDates = [];
+        $chartSales = [];
+
         foreach ($sales as $sale) {
-            $chartData[$sale->date] = $sale->total_sales;
+            $chartDates[] = $sale->date;
+            $chartSales[] = $sale->total_sales;
         }
 
-        return $chartData;
+        return ['labels' => $chartDates, 'sales' => $chartSales];
     }
 
 
@@ -52,17 +80,44 @@ class Order extends Model
         $currentMonthStart = Carbon::now()->startOfMonth();
         $currentMonthEnd = Carbon::now()->endOfMonth();
 
-        $orders = static::selectRaw('DATE(order_date) as date, COUNT(*) as total_orders')
-            ->whereBetween('order_date', [$currentMonthStart, $currentMonthEnd])
-            ->groupBy('date')
+        $orders = static::selectRaw('DATE(created_at) as date, COUNT(*) as total_orders')
+            ->whereBetween('created_at', [$currentMonthStart, $currentMonthEnd])
+            ->groupBy('created_at')
             ->get();
 
-        $chartData = [];
+        $chartDates = [];
+        $chartOrders = [];
+
         foreach ($orders as $order) {
-            $chartData[$order->date] = $order->total_orders;
+            $chartDates[] = $order->date;
+            $chartOrders[] = $order->total_orders;
         }
 
-        return $chartData;
+        return ['labels' => $chartDates, 'orders' => $chartOrders];
+    }
+
+
+    public static function getCurrentYearOrders()
+    {
+        $currentYear = Carbon::now()->year;
+    
+        $sales = static::selectRaw('YEAR(created_at) as year, MONTH(created_at) as month, COUNT(*) as total_orders')
+            ->whereYear('created_at', $currentYear)
+            ->groupBy('year', 'month')
+            ->get();
+    
+        $chartLabels = [];
+        $chartOrders = [];
+    
+        foreach ($sales as $sale) {
+            // Create a label for the month (e.g., "Jan 2023")
+            $monthLabel = Carbon::createFromDate($sale->year, $sale->month)->format('M Y');
+            $chartLabels[] = $monthLabel;
+    
+            $chartSales[] = $sale->total_orders;
+        }
+    
+        return ['labels' => $chartLabels, 'sales' => $chartOrders];
     }
 
 
