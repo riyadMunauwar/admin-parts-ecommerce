@@ -6,7 +6,8 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Filament\Widgets\TableWidget as BaseWidget;
 use App\Models\Order;
-use App\Filament\Admin\Resources\OrderResorce;
+use App\Filament\Admin\Resources\OrderResource;
+
 
 class LatestOrders extends BaseWidget
 {
