@@ -29,22 +29,25 @@ class LatestOrders extends BaseWidget
                 ->date()
                 ->sortable(),
 
-            Tables\Columns\TextColumn::make('customer.name')
+            Tables\Columns\TextColumn::make('user.name')
                 ->searchable()
                 ->sortable(),
 
             Tables\Columns\TextColumn::make('payment_status')
                 ->badge(),
 
-            Tables\Columns\TextColumn::make('order_status')
+            Tables\Columns\TextColumn::make('status')
                 ->badge(),
 
-            Tables\Columns\TextColumn::make('total_order_price')
+            Tables\Columns\TextColumn::make('total_product_price')
                 ->searchable()
+                ->money()
                 ->sortable(),
+
             Tables\Columns\TextColumn::make('shipping_cost')
                 ->label('Shipping cost')
                 ->searchable()
+                ->money()
                 ->sortable(),
         ])
         ->actions([
