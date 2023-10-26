@@ -89,7 +89,7 @@ class Order extends Model
         $chartOrders = [];
 
         foreach ($orders as $order) {
-            $chartDates[] = Carbon::parse($sale->date)->format('m d');
+            $chartDates[] = Carbon::parse($order->date)->format('m d');
             $chartOrders[] = $order->total_orders;
         }
 
