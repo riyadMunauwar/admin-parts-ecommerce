@@ -9,6 +9,7 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Illuminate\Database\Eloquent\Model;
 
 class ProductsRelationManager extends RelationManager
 {
@@ -45,6 +46,10 @@ class ProductsRelationManager extends RelationManager
                 Tables\Actions\BulkActionGroup::make([
                     Tables\Actions\DeleteBulkAction::make(),
                 ]),
-            ]);
+            ])
+            ->recordUrl(
+                fn (Model $record): string => route('products.edit', ['record' => $record]),
+            )
+            ->reorderable('sort_order');
     }
 }
