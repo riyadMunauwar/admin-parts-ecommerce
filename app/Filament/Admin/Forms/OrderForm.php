@@ -194,7 +194,8 @@ class OrderForm
 
                                         Forms\Components\TextInput::make('phone')
                                             ->nullable(),
-                                ]),
+                                ])
+                                ->columns(2),
                         ]),
             ]),
         ];
