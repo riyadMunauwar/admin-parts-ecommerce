@@ -148,7 +148,53 @@ class OrderForm
                         ]),
                     Forms\Components\Tabs\Tab::make('Customer')
                         ->schema([
-                            // ...
+
+                            Forms\Components\Section::make('Customer')
+                                ->relationship('user')
+                                ->schema([
+
+                                    Forms\Components\TextInput::make('name')
+                                        ->disabled(),
+
+                                    Forms\Components\TextInput::make('email')
+                                        ->disabled(),
+                                ]),
+
+                            Forms\Components\Section::make('Shipping Address')
+                                ->relationship('address')
+                                ->schema([
+
+                                        Forms\Components\TextInput::make('first_name')
+                                            ->nullable(),
+
+                                        Forms\Components\TextInput::make('last_name')
+                                            ->nullable(),
+
+
+                                        Forms\Components\TextInput::make('street_1')
+                                            ->nullable(),
+
+                                        Forms\Components\TextInput::make('street_2')
+                                            ->nullable(),
+
+                                        Forms\Components\TextInput::make('city')
+                                            ->nullable(),
+
+                                        Forms\Components\TextInput::make('zip')
+                                            ->nullable(),
+
+                                        Forms\Components\TextInput::make('state')
+                                            ->nullable(),
+
+                                        Forms\Components\TextInput::make('country')
+                                            ->nullable(),
+
+                                        Forms\Components\TextInput::make('email')
+                                            ->nullable(),
+
+                                        Forms\Components\TextInput::make('phone')
+                                            ->nullable(),
+                                ]),
                         ]),
             ]),
         ];
