@@ -63,6 +63,7 @@ class ShipperResource extends Resource
                     ->toggleable(),
 
                 Tables\Columns\TextColumn::make('delivery_cost')
+                    ->money()
                     ->searchable()
                     ->toggleable(),
 

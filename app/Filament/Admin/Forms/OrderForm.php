@@ -34,6 +34,15 @@ class OrderForm
                                         ->native(false)
                                         ->required(),
 
+                                    Forms\Components\Select::make('payment_status')
+                                        ->label('Payment status')
+                                        ->options([
+                                            'paid' => 'Paid',
+                                            'unpaid' => 'Unpaid',
+                                        ])
+                                        ->native(false)
+                                        ->required(),
+
                                     Forms\Components\Select::make('user_id')
                                         ->label('Customer')
                                         ->getSearchResultsUsing(fn (string $search): array => User::where('name', 'like', "%{$search}%")->limit(12)->pluck('name', 'id')->toArray())
@@ -50,7 +59,38 @@ class OrderForm
                                     Forms\Components\TextInput::make('shipping_cost')
                                         ->label('Shipping price')
                                         ->numeric()
-                                        ->required(),
+                                        ->nullable(),
+
+                                    Forms\Components\TextInput::make('total_vat')
+                                        ->label('Total vat')
+                                        ->numeric()
+                                        ->nullable(),
+
+                                    Forms\Components\TextInput::make('used_credit')
+                                        ->numeric()
+                                        ->nullable(),
+
+                                    Forms\Components\TextInput::make('payment_method_name')
+                                        ->nullable(),
+
+                                    Forms\Components\DateTimePicker::make('estimate_delivery_date')
+                                        ->native(false)
+                                        ->nullable(),
+
+                                    Forms\Components\TextInput::make('estimate_delivery_time')
+                                        ->nullable(),
+
+                                    Forms\Components\Textarea::make('admin_note')
+                                        ->nullable(),
+
+                                    Forms\Components\Textarea::make('order_note')
+                                        ->nullable(),
+
+                                    Forms\Components\TextInput::make('tracking_url')
+                                        ->nullable(),
+
+                                    Forms\Components\TextInput::make('tracking_number')
+                                        ->nullable(),
 
                                 ])->columns(2),
                         ]),
@@ -99,7 +139,7 @@ class OrderForm
                                 ])
                                 ->columns(5)
                         ]),
-                    Forms\Components\Tabs\Tab::make('Payment & Delivery')
+                    Forms\Components\Tabs\Tab::make('Customer')
                         ->schema([
                             // ...
                         ]),
