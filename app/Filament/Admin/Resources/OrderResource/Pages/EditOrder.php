@@ -14,6 +14,19 @@ class EditOrder extends EditRecord
     {
         return [
             Actions\DeleteAction::make(),
+
+            Action::make('Download Invoice')
+                ->form([
+                    TextInput::make('subject')->required(),
+                    RichEditor::make('body')->required(),
+                ])
+                ->action(function (array $data) {
+                    Mail::to($this->client)
+                        ->send(new GenericEmail(
+                            subject: $data['subject'],
+                            body: $data['body'],
+                        ));
+                })
         ];
     }
 }
