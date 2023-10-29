@@ -21,7 +21,6 @@ class Order extends Model
     ];
 
 
-
     public function totalPrice()
     {
         return $this->total_product_price + $this->shipping_cost + $this->total_vat;
