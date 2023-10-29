@@ -49,7 +49,23 @@ class ShipperResource extends Resource
     {
         return $table
             ->columns([
-                //
+
+                Tables\Columns\TextColumn::make('shipper')
+                    ->searchable()
+                    ->toggleable(),
+
+                Tables\Columns\TextColumn::make('slug')
+                    ->searchable()
+                    ->toggleable(),
+
+                Tables\Columns\TextColumn::make('notes')
+                    ->searchable()
+                    ->toggleable(),
+
+                Tables\Columns\TextColumn::make('delivery_cost')
+                    ->searchable()
+                    ->toggleable(),
+
             ])
             ->filters([
                 //

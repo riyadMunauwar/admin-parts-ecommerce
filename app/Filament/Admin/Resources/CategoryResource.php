@@ -91,8 +91,8 @@ class CategoryResource extends Resource
                     ->searchable()
                     ->toggleable(),
 
-                Tables\Columns\CheckboxColumn::make('is_featured')
-                    ->label('Featured')
+                Tables\Columns\ToggleColumn::make('is_published')
+                    ->label('Published')
                     ->toggleable(),
             ])
             ->filters([
