@@ -149,16 +149,16 @@ class OrderForm
                     Forms\Components\Tabs\Tab::make('Customer')
                         ->schema([
 
-                            Forms\Components\Section::make('Customer')
-                                ->relationship('user')
-                                ->schema([
+                            // Forms\Components\Section::make('Customer')
+                            //     ->relationship('user')
+                            //     ->schema([
 
-                                    Forms\Components\TextInput::make('name')
-                                        ->disabled(),
+                            //         Forms\Components\TextInput::make('name')
+                            //             ->disabled(),
 
-                                    Forms\Components\TextInput::make('email')
-                                        ->disabled(),
-                                ]),
+                            //         Forms\Components\TextInput::make('email')
+                            //             ->disabled(),
+                            //     ]),
 
                             Forms\Components\Section::make('Shipping Address')
                                 ->relationship('address')
