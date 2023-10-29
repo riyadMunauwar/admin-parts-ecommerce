@@ -24,7 +24,7 @@ class ShipperForm
             Forms\Components\Textarea::make('notes')
                 ->nullable(),
 
-            Forms\Components\Textarea::make('delivery_cost')
+            Forms\Components\TextInput::make('delivery_cost')
                 ->numeric()
                 ->nullable(),
 
