@@ -66,12 +66,17 @@ class ShipperResource extends Resource
                     ->searchable()
                     ->toggleable(),
 
+                Tables\Columns\ToggleColumn::make('is_published')
+                    ->label('Published')
+                    ->toggleable(),
+
             ])
             ->filters([
                 //
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
