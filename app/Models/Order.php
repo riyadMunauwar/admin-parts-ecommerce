@@ -15,7 +15,6 @@ class Order extends Model
     use HasFactory;
 
 
-
     protected $casts = [
         'order_date' => 'datetime',
         'paid_at' => 'datetime',
