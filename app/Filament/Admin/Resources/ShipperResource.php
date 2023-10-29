@@ -41,7 +41,8 @@ class ShipperResource extends Resource
     public static function form(Form $form): Form
     {
         return $form
-            ->schema(\App\Filament\Admin\Forms\ShipperForm::make());
+            ->schema(\App\Filament\Admin\Forms\ShipperForm::make())
+            ->columns(1);
     }
 
     public static function table(Table $table): Table
