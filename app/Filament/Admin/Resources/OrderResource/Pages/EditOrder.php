@@ -19,12 +19,8 @@ class EditOrder extends EditRecord
             Actions\DeleteAction::make(),
 
             Actions\Action::make('Download Invoice')
-                ->form([
-                    TextInput::make('subject')->required(),
-                    RichEditor::make('body')->required(),
-                ])
-                ->action(function (array $data) {
-                    dd($data);
+                ->action(function () {
+                    dd('On processing...');
                 })
         ];
     }
