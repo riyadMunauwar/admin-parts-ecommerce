@@ -9,4 +9,13 @@ use Spatie\Translatable\HasTranslations;
 class Shipper extends Model
 {
     use HasFactory;
+
+
+    protected $fillable = [
+        'shipper',
+        'notes',
+        'delivery_cost',
+        'slug',
+        'is_published',
+    ];
 }
