@@ -80,17 +80,24 @@ class OrderForm
                                     Forms\Components\TextInput::make('estimate_delivery_time')
                                         ->nullable(),
 
-                                    Forms\Components\Textarea::make('admin_note')
-                                        ->nullable(),
-
-                                    Forms\Components\Textarea::make('order_note')
-                                        ->nullable(),
-
                                     Forms\Components\TextInput::make('tracking_url')
-                                        ->nullable(),
+                                        ->nullable()
+                                        ->columnSpanFull(),
 
                                     Forms\Components\TextInput::make('tracking_number')
-                                        ->nullable(),
+                                        ->nullable()
+                                        ->columnSpanFull(),
+
+                                    Forms\Components\Textarea::make('admin_note')
+                                        ->nullable()
+                                        ->columnSpanFull(),
+
+                                    Forms\Components\Textarea::make('order_note')
+                                        ->label('Customer note')
+                                        ->nullable()
+                                        ->columnSpanFull(),
+
+
 
                                 ])->columns(2),
                         ]),
