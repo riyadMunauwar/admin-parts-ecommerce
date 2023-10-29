@@ -75,8 +75,8 @@ class ShipperResource extends Resource
     {
         return [
             'index' => Pages\ListShippers::route('/'),
-            'create' => Pages\CreateShipper::route('/create'),
-            'edit' => Pages\EditShipper::route('/{record}/edit'),
+            // 'create' => Pages\CreateShipper::route('/create'),
+            // 'edit' => Pages\EditShipper::route('/{record}/edit'),
         ];
     }    
 }
