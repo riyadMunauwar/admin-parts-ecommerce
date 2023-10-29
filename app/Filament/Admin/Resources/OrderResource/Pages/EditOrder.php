@@ -5,6 +5,9 @@ namespace App\Filament\Admin\Resources\OrderResource\Pages;
 use App\Filament\Admin\Resources\OrderResource;
 use Filament\Actions;
 use Filament\Resources\Pages\EditRecord;
+use Filament\Forms\Components\RichEditor;
+use Filament\Forms\Components\TextInput;
+use Illuminate\Support\Facades\Mail;
 
 class EditOrder extends EditRecord
 {
@@ -17,10 +20,11 @@ class EditOrder extends EditRecord
 
             Actions\Action::make('Download Invoice')
                 ->form([
-                    
+                    TextInput::make('subject')->required(),
+                    RichEditor::make('body')->required(),
                 ])
                 ->action(function (array $data) {
-                    
+                    dd($data);
                 })
         ];
     }
