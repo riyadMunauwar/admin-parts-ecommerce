@@ -32,7 +32,7 @@ class EditOrder extends EditRecord
                 }),
 
             Actions\Action::make('Download Invoice')
-                ->url(fn (): string => "https://mobilecomusa.com/user/invoice/download/{{$this->getRecord()->id}}")
+                ->url(fn (): string => "https://mobilecomusa.com/user/invoice/download/{$this->getRecord()->id}"),
         ];
     }
 }
