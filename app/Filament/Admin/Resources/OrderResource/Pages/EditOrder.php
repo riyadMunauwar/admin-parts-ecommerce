@@ -24,7 +24,7 @@ class EditOrder extends EditRecord
                     RichEditor::make('body')->required(),
                 ])
                 ->action(function (array $data) {
-                    Mail::to($this->client)
+                    Mail::to($this->getRecord()->user->email)
                         ->send(new GenericEmail(
                             subject: $data['subject'],
                             body: $data['body'],
