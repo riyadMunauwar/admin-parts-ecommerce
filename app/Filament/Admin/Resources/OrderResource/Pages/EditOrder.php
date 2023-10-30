@@ -3,6 +3,7 @@
 namespace App\Filament\Admin\Resources\OrderResource\Pages;
 
 use App\Filament\Admin\Resources\OrderResource;
+use Filament\Notifications\Notification;
 use Filament\Actions;
 use Filament\Resources\Pages\EditRecord;
 use Filament\Forms\Components\RichEditor;
@@ -25,11 +26,27 @@ class EditOrder extends EditRecord
                     RichEditor::make('body')->required(),
                 ])
                 ->action(function (array $data) {
-                    Mail::to('contact.riyadmunauwar@gmail.com')
+
+                    try {
+
+                        Mail::to($this->getRecord()->user->email)
                         ->send(new CustomMailToCustomer(
                             subject: $data['subject'],
                             body: $data['body'],
                         ));
+
+                        Notification::make()
+                            ->title('Mail sent successfully')
+                            ->success()
+                            ->send();
+
+                    }catch(\Exception $ex){
+                        Notification::make()
+                            ->title('Something went wrong. Please try again')
+                            ->danger()
+                            ->send();
+                    }
+
                 }),
 
             Actions\Action::make('Download Invoice')
