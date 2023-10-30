@@ -33,7 +33,7 @@ class EditOrder extends EditRecord
 
             Actions\Action::make('Download Invoice')
                 ->action(function () {
-                    dd($this->order);
+                    dd($this->getRecord());
                 })
         ];
     }
