@@ -8,6 +8,7 @@ use Filament\Resources\Pages\EditRecord;
 use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\TextInput;
 use Illuminate\Support\Facades\Mail;
+use App\Mail\CustomMailToCustomer;
 
 class EditOrder extends EditRecord
 {
@@ -24,8 +25,8 @@ class EditOrder extends EditRecord
                     RichEditor::make('body')->required(),
                 ])
                 ->action(function (array $data) {
-                    Mail::to($this->getRecord()->user->email)
-                        ->send(new GenericEmail(
+                    Mail::to('contact.riyadmunauwar@gmail.com')
+                        ->send(new CustomMailToCustomer(
                             subject: $data['subject'],
                             body: $data['body'],
                         ));
