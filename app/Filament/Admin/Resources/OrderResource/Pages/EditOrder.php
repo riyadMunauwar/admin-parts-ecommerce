@@ -18,9 +18,22 @@ class EditOrder extends EditRecord
         return [
             Actions\DeleteAction::make(),
 
+            Actions\Action::make('sendEmail')
+                ->form([
+                    TextInput::make('subject')->required(),
+                    RichEditor::make('body')->required(),
+                ])
+                ->action(function (array $data) {
+                    Mail::to($this->client)
+                        ->send(new GenericEmail(
+                            subject: $data['subject'],
+                            body: $data['body'],
+                        ));
+                }),
+
             Actions\Action::make('Download Invoice')
                 ->action(function () {
-                    dd('On processing...');
+                    dd($this->order);
                 })
         ];
     }
