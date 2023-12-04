@@ -32,7 +32,7 @@ class NewOrderForm
 
                                             Forms\Components\TextInput::make('total_product_price')
                                                 ->required()
-                                                // ->disabled(),
+                                                ->disabled()
                                                 ->prefix('$'),
 
                                             Forms\Components\TextInput::make('shipping_cost')
@@ -65,6 +65,7 @@ class NewOrderForm
                                                 ->nullable(),
 
                                             Forms\Components\TextInput::make('payment_method_name')
+                                                ->disabled()
                                                 ->nullable(),
 
                                             Forms\Components\DateTimePicker::make('estimate_delivery_date')
