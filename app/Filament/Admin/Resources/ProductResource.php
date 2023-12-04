@@ -56,6 +56,7 @@ class ProductResource extends Resource
     public static function table(Table $table): Table
     {
         return $table
+            ->modifyQueryUsing(fn (Builder $query) => $query->latest())
             ->columns([
                 SpatieMediaLibraryImageColumn::make('thumbnail')
                     ->collection('thumbnail')
