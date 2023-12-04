@@ -41,7 +41,7 @@ class NewOrderForm
                                                 ->required(),
 
                                             Forms\Components\Select::make('user_id')
-                                                ->relationship('customer', 'email')
+                                                ->relationship('user', 'email')
                                                 ->searchable()
                                                 ->required()
                                                 ->createOptionForm(\App\Filament\Admin\Forms\UserForm::make())
