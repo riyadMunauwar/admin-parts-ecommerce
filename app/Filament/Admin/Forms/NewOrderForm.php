@@ -174,7 +174,7 @@ class NewOrderForm
                     Forms\Components\Section::make('Order items')
                         ->schema([
 
-                            Forms\Components\Repeater::make('items')
+                            Forms\Components\Repeater::make('orderItems')
                                 ->relationship()
                                 ->schema([
 
