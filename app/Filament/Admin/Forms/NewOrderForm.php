@@ -10,7 +10,7 @@ use App\Models\Product;
 use App\Models\User;
 
 
-class OrderForm
+class NewOrderForm
 {
 
     public static function make()
