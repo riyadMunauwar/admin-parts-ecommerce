@@ -41,7 +41,7 @@ class OrderResource extends Resource
     public static function form(Form $form): Form
     {
         return $form
-            ->schema(\App\Filament\Admin\Forms\OrderForm::make())->columns(1);
+            ->schema(\App\Filament\Admin\Forms\NewOrderForm::make())->columns(1);
     }
 
     public static function table(Table $table): Table
