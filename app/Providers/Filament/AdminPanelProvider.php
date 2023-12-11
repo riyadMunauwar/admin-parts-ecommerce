@@ -60,8 +60,9 @@ class AdminPanelProvider extends PanelProvider
                 Authenticate::class,
             ])
             ->plugin(
-                // SpatieLaravelTranslatablePlugin::make()->defaultLocales(['en', 'es']),
-                \Hasnayeen\Themes\ThemesPlugin::make()
+                \Hasnayeen\Themes\ThemesPlugin::make(),
+                SpatieLaravelTranslatablePlugin::make()->defaultLocales(['en', 'es']),
+
             )
             ->spa();
     }
